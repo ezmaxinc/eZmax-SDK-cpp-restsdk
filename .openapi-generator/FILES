@@ -19,6 +19,8 @@ MultipartFormData.h
 Object.cpp
 Object.h
 README.md
+api/GlobalCustomerApi.cpp
+api/GlobalCustomerApi.h
 api/ModuleUserApi.cpp
 api/ModuleUserApi.h
 api/ObjectActivesessionApi.cpp
@@ -222,6 +224,8 @@ model/Franchisereferalincome_createObject_v1_Response.cpp
 model/Franchisereferalincome_createObject_v1_Response.h
 model/Franchisereferalincome_createObject_v1_Response_mPayload.cpp
 model/Franchisereferalincome_createObject_v1_Response_mPayload.h
+model/Global_customer_getEndpoint_v1_Response.cpp
+model/Global_customer_getEndpoint_v1_Response.h
 model/Multilingual_ApikeyDescription.cpp
 model/Multilingual_ApikeyDescription.h
 model/Phone_Request.cpp
