@@ -11,18 +11,18 @@
  */
 
 /*
- * ObjectActivesessionApi.h
+ * ModuleSsprApi.h
  *
  * 
  */
 
-#ifndef COM_EZMAX_API_ObjectActivesessionApi_H_
-#define COM_EZMAX_API_ObjectActivesessionApi_H_
+#ifndef COM_EZMAX_API_ModuleSsprApi_H_
+#define COM_EZMAX_API_ModuleSsprApi_H_
 
 
 #include "../ApiClient.h"
 
-#include "Activesession_getCurrent_v1_Response.h"
+#include "Common_Response_Error.h"
 
 
 #include <boost/optional.hpp>
@@ -35,21 +35,21 @@ using namespace org::openapitools::client::model;
 
 
 
-class  ObjectActivesessionApi 
+class  ModuleSsprApi 
 {
 public:
 
-    explicit ObjectActivesessionApi( std::shared_ptr<const ApiClient> apiClient );
+    explicit ModuleSsprApi( std::shared_ptr<const ApiClient> apiClient );
 
-    virtual ~ObjectActivesessionApi();
+    virtual ~ModuleSsprApi();
 
     /// <summary>
-    /// Get Current Activesession
+    /// Remind of forgotten username(s)
     /// </summary>
     /// <remarks>
-    /// Retrieve the details about the current activesession
+    /// This endpoint returns an email with the username(s) matching the email address provided in case of forgotten username
     /// </remarks>
-    pplx::task<std::shared_ptr<Activesession_getCurrent_v1_Response>> activesessionGetCurrentV1(
+    pplx::task<void> ssprRemindUsernamesV1(
     ) const;
 
 protected:
@@ -60,5 +60,5 @@ protected:
 }
 }
 
-#endif /* COM_EZMAX_API_ObjectActivesessionApi_H_ */
+#endif /* COM_EZMAX_API_ModuleSsprApi_H_ */
 

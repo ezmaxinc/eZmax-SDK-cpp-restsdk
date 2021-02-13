@@ -21,6 +21,8 @@ Object.h
 README.md
 api/GlobalCustomerApi.cpp
 api/GlobalCustomerApi.h
+api/ModuleSsprApi.cpp
+api/ModuleSsprApi.h
 api/ModuleUserApi.cpp
 api/ModuleUserApi.h
 api/ObjectActivesessionApi.cpp

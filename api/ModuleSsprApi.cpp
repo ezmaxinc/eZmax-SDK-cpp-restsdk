@@ -11,7 +11,7 @@
  */
 
 
-#include "ObjectApikeyApi.h"
+#include "ModuleSsprApi.h"
 #include "IHttpBody.h"
 #include "JsonBody.h"
 #include "MultipartFormData.h"
@@ -26,21 +26,21 @@ namespace api {
 
 using namespace org::openapitools::client::model;
 
-ObjectApikeyApi::ObjectApikeyApi( std::shared_ptr<const ApiClient> apiClient )
+ModuleSsprApi::ModuleSsprApi( std::shared_ptr<const ApiClient> apiClient )
     : m_ApiClient(apiClient)
 {
 }
 
-ObjectApikeyApi::~ObjectApikeyApi()
+ModuleSsprApi::~ModuleSsprApi()
 {
 }
 
-pplx::task<std::shared_ptr<Apikey_createObject_v1_Response>> ObjectApikeyApi::apikeyCreateObjectV1(std::vector<std::shared_ptr<Apikey_createObject_v1_Request>> apikeyCreateObjectV1Request) const
+pplx::task<void> ModuleSsprApi::ssprRemindUsernamesV1() const
 {
 
 
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t localVarPath = utility::conversions::to_string_t("/1/object/apikey");
+    utility::string_t localVarPath = utility::conversions::to_string_t("/1/module/sspr/remindUsernames");
     
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams( localVarApiConfiguration->getDefaultHeaders() );
@@ -69,13 +69,12 @@ pplx::task<std::shared_ptr<Apikey_createObject_v1_Response>> ObjectApikeyApi::ap
     }
     else
     {
-        throw ApiException(400, utility::conversions::to_string_t("ObjectApikeyApi->apikeyCreateObjectV1 does not produce any supported media type"));
+        throw ApiException(400, utility::conversions::to_string_t("ModuleSsprApi->ssprRemindUsernamesV1 does not produce any supported media type"));
     }
 
     localVarHeaderParams[utility::conversions::to_string_t("Accept")] = localVarResponseHttpContentType;
 
     std::unordered_set<utility::string_t> localVarConsumeHttpContentTypes;
-    localVarConsumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
 
     std::shared_ptr<IHttpBody> localVarHttpBody;
@@ -85,38 +84,11 @@ pplx::task<std::shared_ptr<Apikey_createObject_v1_Response>> ObjectApikeyApi::ap
     if ( localVarConsumeHttpContentTypes.size() == 0 || localVarConsumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != localVarConsumeHttpContentTypes.end() )
     {
         localVarRequestHttpContentType = utility::conversions::to_string_t("application/json");
-        web::json::value localVarJson;
-
-        {
-            std::vector<web::json::value> localVarJsonArray;
-            for( auto& localVarItem : apikeyCreateObjectV1Request )
-            {
-                localVarJsonArray.push_back( localVarItem.get() ? localVarItem->toJson() : web::json::value::null() );
-                
-            }
-            localVarJson = web::json::value::array(localVarJsonArray);
-        }
-        
-        localVarHttpBody = std::shared_ptr<IHttpBody>( new JsonBody( localVarJson ) );
     }
     // multipart formdata
     else if( localVarConsumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != localVarConsumeHttpContentTypes.end() )
     {
         localVarRequestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
-        std::shared_ptr<MultipartFormData> localVarMultipart(new MultipartFormData);
-
-        {
-            std::vector<web::json::value> localVarJsonArray;
-            for( auto& localVarItem : apikeyCreateObjectV1Request )
-            {
-                localVarJsonArray.push_back(ModelBase::toJson(localVarItem));
-            }
-            localVarMultipart->add(ModelBase::toHttpContent(utility::conversions::to_string_t("apikeyCreateObjectV1Request"), localVarJsonArray, utility::conversions::to_string_t("application/json")));
-        }
-        
-
-        localVarHttpBody = localVarMultipart;
-        localVarRequestHttpContentType += utility::conversions::to_string_t("; boundary=") + localVarMultipart->getBoundary();
     }
     else if (localVarConsumeHttpContentTypes.find(utility::conversions::to_string_t("application/x-www-form-urlencoded")) != localVarConsumeHttpContentTypes.end())
     {
@@ -124,7 +96,7 @@ pplx::task<std::shared_ptr<Apikey_createObject_v1_Response>> ObjectApikeyApi::ap
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("ObjectApikeyApi->apikeyCreateObjectV1 does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("ModuleSsprApi->ssprRemindUsernamesV1 does not consume any supported media type"));
     }
 
     // authentication (Authorization) required
@@ -152,7 +124,7 @@ pplx::task<std::shared_ptr<Apikey_createObject_v1_Response>> ObjectApikeyApi::ap
         if (localVarResponse.status_code() >= 400)
         {
             throw ApiException(localVarResponse.status_code()
-                , utility::conversions::to_string_t("error calling apikeyCreateObjectV1: ") + localVarResponse.reason_phrase()
+                , utility::conversions::to_string_t("error calling ssprRemindUsernamesV1: ") + localVarResponse.reason_phrase()
                 , std::make_shared<std::stringstream>(localVarResponse.extract_utf8string(true).get()));
         }
 
@@ -163,7 +135,7 @@ pplx::task<std::shared_ptr<Apikey_createObject_v1_Response>> ObjectApikeyApi::ap
             if( localVarContentType.find(localVarResponseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling apikeyCreateObjectV1: unexpected response type: ") + localVarContentType
+                    , utility::conversions::to_string_t("error calling ssprRemindUsernamesV1: unexpected response type: ") + localVarContentType
                     , std::make_shared<std::stringstream>(localVarResponse.extract_utf8string(true).get()));
             }
         }
@@ -172,25 +144,7 @@ pplx::task<std::shared_ptr<Apikey_createObject_v1_Response>> ObjectApikeyApi::ap
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<Apikey_createObject_v1_Response> localVarResult(new Apikey_createObject_v1_Response());
-
-        if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
-        {
-            web::json::value localVarJson = web::json::value::parse(localVarResponse);
-
-            ModelBase::fromJson(localVarJson, localVarResult);
-        }
-        // else if(localVarResponseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
-        // {
-        // TODO multipart response parsing
-        // }
-        else
-        {
-            throw ApiException(500
-                , utility::conversions::to_string_t("error calling apikeyCreateObjectV1: unsupported response type"));
-        }
-
-        return localVarResult;
+        return void();
     });
 }
 
