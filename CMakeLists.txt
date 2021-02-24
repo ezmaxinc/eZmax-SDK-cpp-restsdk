@@ -1,6 +1,6 @@
 #
 # eZmax API Definition
-# This API expose all the functionnalities for the eZmax and eZsign application.
+# This API expose all the functionnalities for the eZmax and eZsign applications.
 #
 # The version of the OpenAPI document: 1.0.0
 #
