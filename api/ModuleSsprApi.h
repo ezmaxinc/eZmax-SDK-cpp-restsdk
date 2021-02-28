@@ -23,6 +23,11 @@
 #include "../ApiClient.h"
 
 #include "Common_Response_Error.h"
+#include "Sspr_resetPasswordRequest_v1_Request.h"
+#include "Sspr_resetPassword_v1_Request.h"
+#include "Sspr_sendUsernames_v1_Request.h"
+#include "Sspr_unlockAccountRequest_v1_Request.h"
+#include "Sspr_unlockAccount_v1_Request.h"
 
 
 #include <boost/optional.hpp>
@@ -44,12 +49,54 @@ public:
     virtual ~ModuleSsprApi();
 
     /// <summary>
-    /// Remind of forgotten username(s)
+    /// Reset Password Request
+    /// </summary>
+    /// <remarks>
+    /// This endpoint sends an email with a link to reset the user&#39;s password.  sEmailAddress must be set if eUserTypeSSPR &#x3D; EzsignUser  sUserLoginname must be set if eUserTypeSSPR &#x3D; Native
+    /// </remarks>
+    /// <param name="ssprResetPasswordRequestV1Request"></param>
+    pplx::task<void> ssprResetPasswordRequestV1(
+        std::shared_ptr<Sspr_resetPasswordRequest_v1_Request> ssprResetPasswordRequestV1Request
+    ) const;
+    /// <summary>
+    /// Reset Password
+    /// </summary>
+    /// <remarks>
+    /// This endpoint resets the user&#39;s password.  sEmailAddress must be set if eUserTypeSSPR &#x3D; EzsignUser  sUserLoginname must be set if eUserTypeSSPR &#x3D; Native
+    /// </remarks>
+    /// <param name="ssprResetPasswordV1Request"></param>
+    pplx::task<void> ssprResetPasswordV1(
+        std::shared_ptr<Sspr_resetPassword_v1_Request> ssprResetPasswordV1Request
+    ) const;
+    /// <summary>
+    /// Send username(s)
     /// </summary>
     /// <remarks>
     /// This endpoint returns an email with the username(s) matching the email address provided in case of forgotten username
     /// </remarks>
-    pplx::task<void> ssprRemindUsernamesV1(
+    /// <param name="ssprSendUsernamesV1Request"></param>
+    pplx::task<void> ssprSendUsernamesV1(
+        std::shared_ptr<Sspr_sendUsernames_v1_Request> ssprSendUsernamesV1Request
+    ) const;
+    /// <summary>
+    /// Unlock Account Request
+    /// </summary>
+    /// <remarks>
+    /// This endpoint sends an email with a link to unlock the user account.  sEmailAddress must be set if eUserTypeSSPR &#x3D; EzsignUser  sUserLoginname must be set if eUserTypeSSPR &#x3D; Native
+    /// </remarks>
+    /// <param name="ssprUnlockAccountRequestV1Request"></param>
+    pplx::task<void> ssprUnlockAccountRequestV1(
+        std::shared_ptr<Sspr_unlockAccountRequest_v1_Request> ssprUnlockAccountRequestV1Request
+    ) const;
+    /// <summary>
+    /// Unlock Account
+    /// </summary>
+    /// <remarks>
+    /// This endpoint unlocks the user account.  sEmailAddress must be set if eUserTypeSSPR &#x3D; EzsignUser  sUserLoginname must be set if eUserTypeSSPR &#x3D; Native
+    /// </remarks>
+    /// <param name="ssprUnlockAccountV1Request"></param>
+    pplx::task<void> ssprUnlockAccountV1(
+        std::shared_ptr<Sspr_unlockAccount_v1_Request> ssprUnlockAccountV1Request
     ) const;
 
 protected:

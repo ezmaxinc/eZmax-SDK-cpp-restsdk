@@ -200,6 +200,8 @@ model/Field_ePhoneType.cpp
 model/Field_ePhoneType.h
 model/Field_eUserType.cpp
 model/Field_eUserType.h
+model/Field_eUserTypeSSPR.cpp
+model/Field_eUserTypeSSPR.h
 model/Franchisereferalincome_Request.cpp
 model/Franchisereferalincome_Request.h
 model/Franchisereferalincome_RequestCompound.cpp
@@ -216,6 +218,16 @@ model/Multilingual_ApikeyDescription.cpp
 model/Multilingual_ApikeyDescription.h
 model/Phone_Request.cpp
 model/Phone_Request.h
+model/Sspr_resetPasswordRequest_v1_Request.cpp
+model/Sspr_resetPasswordRequest_v1_Request.h
+model/Sspr_resetPassword_v1_Request.cpp
+model/Sspr_resetPassword_v1_Request.h
+model/Sspr_sendUsernames_v1_Request.cpp
+model/Sspr_sendUsernames_v1_Request.h
+model/Sspr_unlockAccountRequest_v1_Request.cpp
+model/Sspr_unlockAccountRequest_v1_Request.h
+model/Sspr_unlockAccount_v1_Request.cpp
+model/Sspr_unlockAccount_v1_Request.h
 model/UNUSED_ezsigndocument_editObject_v1_Request.cpp
 model/UNUSED_ezsigndocument_editObject_v1_Request.h
 model/UNUSED_ezsigndocument_editObject_v1_Response.cpp
