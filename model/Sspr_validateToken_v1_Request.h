@@ -11,13 +11,13 @@
  */
 
 /*
- * Sspr_unlockAccountRequest_v1_Request.h
+ * Sspr_validateToken_v1_Request.h
  *
- * Request for the /1/module/sspr/unlockAccountRequest API Request
+ * Request for the /1/module/sspr/validateToken API Request
  */
 
-#ifndef ORG_OPENAPITOOLS_CLIENT_MODEL_Sspr_unlockAccountRequest_v1_Request_H_
-#define ORG_OPENAPITOOLS_CLIENT_MODEL_Sspr_unlockAccountRequest_v1_Request_H_
+#ifndef ORG_OPENAPITOOLS_CLIENT_MODEL_Sspr_validateToken_v1_Request_H_
+#define ORG_OPENAPITOOLS_CLIENT_MODEL_Sspr_validateToken_v1_Request_H_
 
 
 #include "../ModelBase.h"
@@ -32,14 +32,14 @@ namespace model {
 
 
 /// <summary>
-/// Request for the /1/module/sspr/unlockAccountRequest API Request
+/// Request for the /1/module/sspr/validateToken API Request
 /// </summary>
-class  Sspr_unlockAccountRequest_v1_Request
+class  Sspr_validateToken_v1_Request
     : public ModelBase
 {
 public:
-    Sspr_unlockAccountRequest_v1_Request();
-    virtual ~Sspr_unlockAccountRequest_v1_Request();
+    Sspr_validateToken_v1_Request();
+    virtual ~Sspr_validateToken_v1_Request();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -53,7 +53,7 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// Sspr_unlockAccountRequest_v1_Request members
+    /// Sspr_validateToken_v1_Request members
 
     /// <summary>
     /// The customer code assigned to your account
@@ -100,6 +100,15 @@ public:
 
     void setSUserLoginname(const utility::string_t& value);
 
+    /// <summary>
+    /// Hex Encoded Secret SSPR token
+    /// </summary>
+    utility::string_t getBinUserSSPRtoken() const;
+    bool binUserSSPRtokenIsSet() const;
+    void unsetBinUserSSPRtoken();
+
+    void setBinUserSSPRtoken(const utility::string_t& value);
+
 
 protected:
     utility::string_t m_PksCustomerCode;
@@ -112,6 +121,8 @@ protected:
     bool m_SEmailAddressIsSet;
     utility::string_t m_SUserLoginname;
     bool m_SUserLoginnameIsSet;
+    utility::string_t m_BinUserSSPRtoken;
+    bool m_BinUserSSPRtokenIsSet;
 };
 
 
@@ -120,4 +131,4 @@ protected:
 }
 }
 
-#endif /* ORG_OPENAPITOOLS_CLIENT_MODEL_Sspr_unlockAccountRequest_v1_Request_H_ */
+#endif /* ORG_OPENAPITOOLS_CLIENT_MODEL_Sspr_validateToken_v1_Request_H_ */

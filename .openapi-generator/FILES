@@ -228,6 +228,8 @@ model/Sspr_unlockAccountRequest_v1_Request.cpp
 model/Sspr_unlockAccountRequest_v1_Request.h
 model/Sspr_unlockAccount_v1_Request.cpp
 model/Sspr_unlockAccount_v1_Request.h
+model/Sspr_validateToken_v1_Request.cpp
+model/Sspr_validateToken_v1_Request.h
 model/UNUSED_ezsigndocument_editObject_v1_Request.cpp
 model/UNUSED_ezsigndocument_editObject_v1_Request.h
 model/UNUSED_ezsigndocument_editObject_v1_Response.cpp

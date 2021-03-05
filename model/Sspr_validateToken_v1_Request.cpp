@@ -12,7 +12,7 @@
 
 
 
-#include "Sspr_unlockAccountRequest_v1_Request.h"
+#include "Sspr_validateToken_v1_Request.h"
 
 namespace org {
 namespace openapitools {
@@ -22,7 +22,7 @@ namespace model {
 
 
 
-Sspr_unlockAccountRequest_v1_Request::Sspr_unlockAccountRequest_v1_Request()
+Sspr_validateToken_v1_Request::Sspr_validateToken_v1_Request()
 {
     m_PksCustomerCode = utility::conversions::to_string_t("");
     m_PksCustomerCodeIsSet = false;
@@ -33,18 +33,20 @@ Sspr_unlockAccountRequest_v1_Request::Sspr_unlockAccountRequest_v1_Request()
     m_SEmailAddressIsSet = false;
     m_SUserLoginname = utility::conversions::to_string_t("");
     m_SUserLoginnameIsSet = false;
+    m_BinUserSSPRtoken = utility::conversions::to_string_t("");
+    m_BinUserSSPRtokenIsSet = false;
 }
 
-Sspr_unlockAccountRequest_v1_Request::~Sspr_unlockAccountRequest_v1_Request()
+Sspr_validateToken_v1_Request::~Sspr_validateToken_v1_Request()
 {
 }
 
-void Sspr_unlockAccountRequest_v1_Request::validate()
+void Sspr_validateToken_v1_Request::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value Sspr_unlockAccountRequest_v1_Request::toJson() const
+web::json::value Sspr_validateToken_v1_Request::toJson() const
 {
 
     web::json::value val = web::json::value::object();
@@ -69,11 +71,15 @@ web::json::value Sspr_unlockAccountRequest_v1_Request::toJson() const
     {
         val[utility::conversions::to_string_t("sUserLoginname")] = ModelBase::toJson(m_SUserLoginname);
     }
+    if(m_BinUserSSPRtokenIsSet)
+    {
+        val[utility::conversions::to_string_t("binUserSSPRtoken")] = ModelBase::toJson(m_BinUserSSPRtoken);
+    }
 
     return val;
 }
 
-bool Sspr_unlockAccountRequest_v1_Request::fromJson(const web::json::value& val)
+bool Sspr_validateToken_v1_Request::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
@@ -127,10 +133,20 @@ bool Sspr_unlockAccountRequest_v1_Request::fromJson(const web::json::value& val)
             setSUserLoginname(refVal_sUserLoginname);
         }
     }
+    if(val.has_field(utility::conversions::to_string_t("binUserSSPRtoken")))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t("binUserSSPRtoken"));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_binUserSSPRtoken;
+            ok &= ModelBase::fromJson(fieldValue, refVal_binUserSSPRtoken);
+            setBinUserSSPRtoken(refVal_binUserSSPRtoken);
+        }
+    }
     return ok;
 }
 
-void Sspr_unlockAccountRequest_v1_Request::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void Sspr_validateToken_v1_Request::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
@@ -157,9 +173,13 @@ void Sspr_unlockAccountRequest_v1_Request::toMultipart(std::shared_ptr<Multipart
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("sUserLoginname"), m_SUserLoginname));
     }
+    if(m_BinUserSSPRtokenIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("binUserSSPRtoken"), m_BinUserSSPRtoken));
+    }
 }
 
-bool Sspr_unlockAccountRequest_v1_Request::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+bool Sspr_validateToken_v1_Request::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     bool ok = true;
     utility::string_t namePrefix = prefix;
@@ -198,108 +218,134 @@ bool Sspr_unlockAccountRequest_v1_Request::fromMultiPart(std::shared_ptr<Multipa
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t("sUserLoginname")), refVal_sUserLoginname );
         setSUserLoginname(refVal_sUserLoginname);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t("binUserSSPRtoken")))
+    {
+        utility::string_t refVal_binUserSSPRtoken;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t("binUserSSPRtoken")), refVal_binUserSSPRtoken );
+        setBinUserSSPRtoken(refVal_binUserSSPRtoken);
+    }
     return ok;
 }
 
-utility::string_t Sspr_unlockAccountRequest_v1_Request::getPksCustomerCode() const
+utility::string_t Sspr_validateToken_v1_Request::getPksCustomerCode() const
 {
     return m_PksCustomerCode;
 }
 
-void Sspr_unlockAccountRequest_v1_Request::setPksCustomerCode(const utility::string_t& value)
+void Sspr_validateToken_v1_Request::setPksCustomerCode(const utility::string_t& value)
 {
     m_PksCustomerCode = value;
     m_PksCustomerCodeIsSet = true;
 }
 
-bool Sspr_unlockAccountRequest_v1_Request::pksCustomerCodeIsSet() const
+bool Sspr_validateToken_v1_Request::pksCustomerCodeIsSet() const
 {
     return m_PksCustomerCodeIsSet;
 }
 
-void Sspr_unlockAccountRequest_v1_Request::unsetPksCustomerCode()
+void Sspr_validateToken_v1_Request::unsetPksCustomerCode()
 {
     m_PksCustomerCodeIsSet = false;
 }
-int32_t Sspr_unlockAccountRequest_v1_Request::getFkiLanguageID() const
+int32_t Sspr_validateToken_v1_Request::getFkiLanguageID() const
 {
     return m_FkiLanguageID;
 }
 
-void Sspr_unlockAccountRequest_v1_Request::setFkiLanguageID(int32_t value)
+void Sspr_validateToken_v1_Request::setFkiLanguageID(int32_t value)
 {
     m_FkiLanguageID = value;
     m_FkiLanguageIDIsSet = true;
 }
 
-bool Sspr_unlockAccountRequest_v1_Request::fkiLanguageIDIsSet() const
+bool Sspr_validateToken_v1_Request::fkiLanguageIDIsSet() const
 {
     return m_FkiLanguageIDIsSet;
 }
 
-void Sspr_unlockAccountRequest_v1_Request::unsetFkiLanguageID()
+void Sspr_validateToken_v1_Request::unsetFkiLanguageID()
 {
     m_FkiLanguageIDIsSet = false;
 }
-std::shared_ptr<Field_eUserTypeSSPR> Sspr_unlockAccountRequest_v1_Request::getEUserTypeSSPR() const
+std::shared_ptr<Field_eUserTypeSSPR> Sspr_validateToken_v1_Request::getEUserTypeSSPR() const
 {
     return m_EUserTypeSSPR;
 }
 
-void Sspr_unlockAccountRequest_v1_Request::setEUserTypeSSPR(const std::shared_ptr<Field_eUserTypeSSPR>& value)
+void Sspr_validateToken_v1_Request::setEUserTypeSSPR(const std::shared_ptr<Field_eUserTypeSSPR>& value)
 {
     m_EUserTypeSSPR = value;
     m_EUserTypeSSPRIsSet = true;
 }
 
-bool Sspr_unlockAccountRequest_v1_Request::eUserTypeSSPRIsSet() const
+bool Sspr_validateToken_v1_Request::eUserTypeSSPRIsSet() const
 {
     return m_EUserTypeSSPRIsSet;
 }
 
-void Sspr_unlockAccountRequest_v1_Request::unsetEUserTypeSSPR()
+void Sspr_validateToken_v1_Request::unsetEUserTypeSSPR()
 {
     m_EUserTypeSSPRIsSet = false;
 }
-utility::string_t Sspr_unlockAccountRequest_v1_Request::getSEmailAddress() const
+utility::string_t Sspr_validateToken_v1_Request::getSEmailAddress() const
 {
     return m_SEmailAddress;
 }
 
-void Sspr_unlockAccountRequest_v1_Request::setSEmailAddress(const utility::string_t& value)
+void Sspr_validateToken_v1_Request::setSEmailAddress(const utility::string_t& value)
 {
     m_SEmailAddress = value;
     m_SEmailAddressIsSet = true;
 }
 
-bool Sspr_unlockAccountRequest_v1_Request::sEmailAddressIsSet() const
+bool Sspr_validateToken_v1_Request::sEmailAddressIsSet() const
 {
     return m_SEmailAddressIsSet;
 }
 
-void Sspr_unlockAccountRequest_v1_Request::unsetSEmailAddress()
+void Sspr_validateToken_v1_Request::unsetSEmailAddress()
 {
     m_SEmailAddressIsSet = false;
 }
-utility::string_t Sspr_unlockAccountRequest_v1_Request::getSUserLoginname() const
+utility::string_t Sspr_validateToken_v1_Request::getSUserLoginname() const
 {
     return m_SUserLoginname;
 }
 
-void Sspr_unlockAccountRequest_v1_Request::setSUserLoginname(const utility::string_t& value)
+void Sspr_validateToken_v1_Request::setSUserLoginname(const utility::string_t& value)
 {
     m_SUserLoginname = value;
     m_SUserLoginnameIsSet = true;
 }
 
-bool Sspr_unlockAccountRequest_v1_Request::sUserLoginnameIsSet() const
+bool Sspr_validateToken_v1_Request::sUserLoginnameIsSet() const
 {
     return m_SUserLoginnameIsSet;
 }
 
-void Sspr_unlockAccountRequest_v1_Request::unsetSUserLoginname()
+void Sspr_validateToken_v1_Request::unsetSUserLoginname()
 {
     m_SUserLoginnameIsSet = false;
+}
+utility::string_t Sspr_validateToken_v1_Request::getBinUserSSPRtoken() const
+{
+    return m_BinUserSSPRtoken;
+}
+
+void Sspr_validateToken_v1_Request::setBinUserSSPRtoken(const utility::string_t& value)
+{
+    m_BinUserSSPRtoken = value;
+    m_BinUserSSPRtokenIsSet = true;
+}
+
+bool Sspr_validateToken_v1_Request::binUserSSPRtokenIsSet() const
+{
+    return m_BinUserSSPRtokenIsSet;
+}
+
+void Sspr_validateToken_v1_Request::unsetBinUserSSPRtoken()
+{
+    m_BinUserSSPRtokenIsSet = false;
 }
 }
 }
