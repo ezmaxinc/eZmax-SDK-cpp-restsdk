@@ -204,6 +204,8 @@ model/Field_eEzsignfolderSendreminderfrequency.cpp
 model/Field_eEzsignfolderSendreminderfrequency.h
 model/Field_eEzsignfolderStep.cpp
 model/Field_eEzsignfolderStep.h
+model/Field_eEzsignsignatureType.cpp
+model/Field_eEzsignsignatureType.h
 model/Field_ePhoneType.cpp
 model/Field_ePhoneType.h
 model/Field_eUserType.cpp
